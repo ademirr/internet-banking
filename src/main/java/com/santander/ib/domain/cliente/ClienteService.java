@@ -1,4 +1,4 @@
-package com.santander.ib.domain;
+package com.santander.ib.domain.cliente;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +23,7 @@ public class ClienteService {
 
     public ClienteDTO cadastrarCliente(ClienteDTO dto) {
         Cliente cliente = modelMapper.map(dto, Cliente.class);
+        cliente.depositar(dto.getSaldo());
         repository.save(cliente);
 
         return modelMapper.map(cliente, ClienteDTO.class);

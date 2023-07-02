@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.santander.ib.domain.ClienteDTO;
-import com.santander.ib.domain.ClienteService;
+import com.santander.ib.domain.cliente.ClienteDTO;
+import com.santander.ib.domain.cliente.ClienteService;
 
 import jakarta.validation.Valid;
 

@@ -1,4 +1,4 @@
-package com.santander.ib.domain;
+package com.santander.ib.domain.cliente;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
