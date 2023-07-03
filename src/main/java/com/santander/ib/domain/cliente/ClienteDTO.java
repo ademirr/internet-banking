@@ -2,23 +2,27 @@ package com.santander.ib.domain.cliente;
 
 import java.math.BigDecimal;
 
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Positive;
 
-@Getter
-@Setter
-public class ClienteDTO	{
+public record ClienteDTO(
 
-	private Long id;
+	@NotBlank
+	String nome,
 	
-	private String nome;
+	@NotNull
+	Boolean planoExclusive,
 	
-	private Boolean planoExclusive;
+	@NotNull
+    @Positive
+	BigDecimal saldo,
 	
-	private BigDecimal saldo;
+	@NotBlank
+	String numeroConta,
 	
-	private String numeroconta;
-	
-	private String dataNascimento;
+	@Pattern(regexp = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$")
+	String dataNascimento) {
 
 }

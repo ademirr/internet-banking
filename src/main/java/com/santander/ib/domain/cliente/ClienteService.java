@@ -15,18 +15,22 @@ public class ClienteService {
 	@Autowired
     private ModelMapper modelMapper;
 
-	public Page<ClienteDTO> listarClientes(Pageable paginacao) {
+	public Page<ClienteDetalhamentoDTO> listarClientes(Pageable paginacao) {
         return repository
                 .findAll(paginacao)
-                .map(p -> modelMapper.map(p, ClienteDTO.class));
+                .map(p -> modelMapper.map(p, ClienteDetalhamentoDTO.class));
     }
 
-    public ClienteDTO cadastrarCliente(ClienteDTO dto) {
-        Cliente cliente = modelMapper.map(dto, Cliente.class);
-        cliente.depositar(dto.getSaldo());
-        repository.save(cliente);
+    public ClienteDetalhamentoDTO cadastrarCliente(ClienteDTO dto) {
+        Cliente cliente = new Cliente(dto);
+        cliente = repository.save(cliente);
 
-        return modelMapper.map(cliente, ClienteDTO.class);
+        return modelMapper.map(cliente, ClienteDetalhamentoDTO.class);
     }
+
+	public ClienteDetalhamentoDTO getReferenceById(Long id) {
+		var cliente = repository.getReferenceById(id);
+		return modelMapper.map(cliente, ClienteDetalhamentoDTO.class);
+	}
 
 }
