@@ -75,7 +75,7 @@ class TransacaoServiceTest {
 	}
 	
 	@Test
-	@DisplayName("Deveria devolver valor total igual valor original quando plano exclusive")
+	@DisplayName("Deveria subtrair valor do saque do saldo do cliente")
 	void testExecutarSaque() throws Exception {
 		String numeroConta = "123456";
 		BigDecimal valor = new BigDecimal("300.00");
