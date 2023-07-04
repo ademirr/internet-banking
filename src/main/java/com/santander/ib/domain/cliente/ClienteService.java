@@ -1,6 +1,5 @@
 package com.santander.ib.domain.cliente;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,9 +13,6 @@ public class ClienteService {
 	
 	@Autowired
 	private ClienteRepository repository;
-	
-	@Autowired
-    private ModelMapper modelMapper;
 
 	public Page<ClienteDTO> listarClientes(Pageable paginacao) {
         return repository
@@ -30,11 +26,6 @@ public class ClienteService {
         cliente = repository.save(cliente);
         return new ClienteDTO(cliente);
     }
-
-	/*public ClienteDetalhamentoDTO getReferenceById(Long id) {
-		var cliente = repository.getReferenceById(id);
-		return modelMapper.map(cliente, ClienteDetalhamentoDTO.class);
-	}*/
 
 	public ClienteDTO getByConta(String conta) {
 		var cliente = repository.findByNumeroConta(conta);

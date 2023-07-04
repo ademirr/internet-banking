@@ -1,0 +1,52 @@
+
+
+insert into CLIENTES values ('1985-10-22', false, 0.00, 1, 'João', '1');
+insert into CLIENTES values ('1995-11-24', true, 200.00, 2, 'José', '2');
+insert into CLIENTES values ('1998-12-20', false, 300.00, 3, 'Maria', '3');
+
+insert into CLIENTES values ('1985-10-22', false, 0.00, 4, 'Ana', '4');
+insert into CLIENTES values ('1995-11-24', true, 200.00, 5, 'Manoel', '5');
+insert into CLIENTES values ('1998-12-20', false, 300.00, 6, 'Paula', '6');
+
+insert into CLIENTES values ('1985-10-22', false, 0.00, 7, 'Lucas', '7');
+insert into CLIENTES values ('1995-11-24', true, 200.00, 8, 'Aparecida', '8');
+insert into CLIENTES values ('1998-12-20', false, 300.00, 9, 'Jorge', '9');
+
+insert into CLIENTES values ('1985-10-22', false, 0.00, 10, 'Teresa', '10');
+insert into CLIENTES values ('1995-11-24', true, 200.00, 11, 'Joaquim', '11');
+insert into CLIENTES values ('1998-12-20', false, 300.00, 12, 'Ruth', '12');
+
+
+
+insert into TRANSACOES  values ('2023-07-01', 1000.00, 1, '1', 'DEPOSITO');
+insert into TRANSACOES  values ('2023-07-01', 50.00, 2, '1', 'SAQUE');
+insert into TRANSACOES  values ('2023-07-02', 20.00, 3, '2', 'DEPOSITO');
+insert into TRANSACOES  values ('2023-07-01', 100.00, 4, '2', 'DEPOSITO');
+insert into TRANSACOES  values ('2023-07-02', 20.00, 5, '1', 'SAQUE');
+
+insert into TRANSACOES  values ('2023-07-01', 1000.00, 6, '2', 'DEPOSITO');
+insert into TRANSACOES  values ('2023-07-01', 50.00, 7, '1', 'SAQUE');
+insert into TRANSACOES  values ('2023-07-02', 20.00, 8, '2', 'DEPOSITO');
+insert into TRANSACOES  values ('2023-07-01', 100.00, 9, '2', 'DEPOSITO');
+insert into TRANSACOES  values ('2023-07-02', 20.00, 10, '2', 'SAQUE');
+
+insert into TRANSACOES  values ('2023-07-03', 1000.00, 11, '1', 'DEPOSITO');
+insert into TRANSACOES  values ('2023-07-03', 50.00, 12, '1', 'SAQUE');
+insert into TRANSACOES  values ('2023-07-03', 20.00, 13, '2', 'DEPOSITO');
+insert into TRANSACOES  values ('2023-07-03', 100.00, 14, '2', 'DEPOSITO');
+insert into TRANSACOES  values ('2023-07-03', 20.00, 15, '2', 'SAQUE');
+
+
+insert into TRANSACOES  values ('2023-07-03', 1000.00, 16, '1', 'DEPOSITO');
+insert into TRANSACOES  values ('2023-07-03', 50.00, 17, '1', 'SAQUE');
+insert into TRANSACOES  values ('2023-07-03', 20.00, 18, '2', 'DEPOSITO');
+insert into TRANSACOES  values ('2023-07-03', 100.00, 19, '2', 'DEPOSITO');
+insert into TRANSACOES  values ('2023-07-03', 20.00, 20, '2', 'SAQUE');
+
+
+insert into TRANSACOES  values ('2023-07-03', 1000.00, 21, '1', 'DEPOSITO');
+insert into TRANSACOES  values ('2023-07-03', 50.00, 22, '1', 'SAQUE');
+insert into TRANSACOES  values ('2023-07-03', 20.00, 23, '2', 'DEPOSITO');
+insert into TRANSACOES  values ('2023-07-03', 100.00, 24, '2', 'DEPOSITO');
+insert into TRANSACOES  values ('2023-07-03', 20.00, 25, '2', 'SAQUE');
+

@@ -10,8 +10,6 @@ import lombok.Setter;
 @Setter
 public class ClienteDetalhamentoDTO {
 		
-	//Long id;
-
 	String nome;
 	
 	Boolean planoExclusive;

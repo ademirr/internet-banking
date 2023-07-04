@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.santander.ib.domain.cliente.ClienteDTO;
-import com.santander.ib.domain.cliente.ClienteDetalhamentoDTO;
 import com.santander.ib.domain.cliente.ClienteService;
 
 import jakarta.validation.Valid;
@@ -39,12 +38,6 @@ public class ClienteController {
     public Page<ClienteDTO> listar(@PageableDefault(size = 10) Pageable paginacao) {
         return service.listarClientes(paginacao);
     }
-
-    /*@GetMapping("/{id}")
-    public ResponseEntity<ClienteDetalhamentoDTO> detalhar(@PathVariable Long id) {
-        var cliente = service.getReferenceById(id);
-        return ResponseEntity.ok(cliente);
-    }*/
 
     @GetMapping("/{numeroConta}")
     public ResponseEntity<ClienteDTO> detalharPorConta(@PathVariable String numeroConta) {

@@ -1,6 +1,7 @@
 package com.santander.ib.domain.cliente;
 
 import java.math.BigDecimal;
+import java.time.format.DateTimeFormatter;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -26,7 +27,7 @@ public record ClienteDTO(
 	String dataNascimento) {
 
 	public ClienteDTO(Cliente p) {
-		this(p.getNome(), p.getPlanoExclusive(), p.getSaldo(), p.getNumeroConta(), p.getDataNascimento().toString());
+		this(p.getNome(), p.getPlanoExclusive(), p.getSaldo(), p.getNumeroConta(), p.getDataNascimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 	}
 
 }

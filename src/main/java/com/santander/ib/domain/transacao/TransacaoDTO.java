@@ -1,7 +1,6 @@
 package com.santander.ib.domain.transacao;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -12,16 +11,12 @@ public record TransacaoDTO(
 		@NotBlank
 		String numeroConta,
 		
-		TipoTransacao tipoTransacao,
-		
 		@NotNull
 	    @Positive
-		BigDecimal valor,
-		
-		LocalDate dataTransacao) {
+		BigDecimal valor) {
 	
 		public TransacaoDTO(Transacao t) {
-			this(t.getNumeroConta(), t.getTipoTransacao(), t.getValor(), t.getDataTransacao());
+			this(t.getNumeroConta(), t.getValor());
 		}
 
 	}

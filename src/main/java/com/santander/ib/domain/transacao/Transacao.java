@@ -39,8 +39,7 @@ public class Transacao {
 		this.numeroConta = dto.numeroConta();
 		this.tipoTransacao = tipo;
 		this.valor = dto.valor();
-		//DateTimeFormatter formatadorBarra = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		this.dataTransacao = LocalDate.now();//.format(formatadorBarra);
+		this.dataTransacao = LocalDate.now();
 	}
 
 }

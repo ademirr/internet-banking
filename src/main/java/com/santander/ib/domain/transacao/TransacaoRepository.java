@@ -9,5 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface TransacaoRepository extends JpaRepository<Transacao, Long> {
 	
 	Page<Transacao> findByDataTransacaoOrderByNumeroConta(LocalDate dataTransacao, Pageable paginacao);
+	
+	Page<Transacao> findByDataTransacaoAndTipoTransacaoOrderByNumeroConta(LocalDate dataTransacao, TipoTransacao tipoTransacao, Pageable paginacao);
 
 }

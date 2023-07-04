@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,6 +25,9 @@ public class TransacaoService {
 	
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+    private ModelMapper modelMapper;
 	
 	public TransacaoDTO cadastrarTransacao(TransacaoDTO dto, TipoTransacao tipo) {
 		Transacao transacao = new Transacao(dto, tipo);
@@ -60,10 +64,17 @@ public class TransacaoService {
 		return cliente;
 	}
 
-	public Page<TransacaoDTO> listarTransacoes(String dataTransacao, Pageable paginacao) {
+	public Page<TransacaoDetalhamentoDTO> listarTransacoesPorData(String dataTransacao, Pageable paginacao) {
         LocalDate ld = LocalDate.parse(dataTransacao, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         return repository
                 .findByDataTransacaoOrderByNumeroConta(ld, paginacao)
-                .map(p -> new TransacaoDTO(p));
+                .map(p -> modelMapper.map(p, TransacaoDetalhamentoDTO.class));
+    }
+
+	public Page<TransacaoDetalhamentoDTO> listarTransacoesPorDataEPorTipoTransacao(String dataTransacao, TipoTransacao tipoTransacao, Pageable paginacao) {
+        LocalDate ld = LocalDate.parse(dataTransacao, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        return repository
+                .findByDataTransacaoAndTipoTransacaoOrderByNumeroConta(ld, tipoTransacao, paginacao)
+                .map(p -> modelMapper.map(p, TransacaoDetalhamentoDTO.class));
     }
 }

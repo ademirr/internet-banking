@@ -1,6 +1,7 @@
 package com.santander.ib.domain.transacao;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,12 +10,12 @@ import lombok.Setter;
 @Setter
 public class TransacaoDetalhamentoDTO {
 		
-	Long id;
-	
 	String numeroconta;
 	
 	String tipoTransacao;
 	
 	BigDecimal valor;
+	
+	LocalDate dataTransacao;
 
 }
