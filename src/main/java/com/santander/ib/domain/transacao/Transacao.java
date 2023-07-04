@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,17 +26,18 @@ public class Transacao {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	private String numeroconta;
-	
-	private String tipoTransacao;
+	private String numeroConta;
+
+    @Enumerated(EnumType.STRING)
+    private TipoTransacao tipoTransacao;
 	
     private BigDecimal valor;
     
     private LocalDate dataTransacao;
 	
-	public Transacao(TransacaoDTO dto) {
-		this.numeroconta = dto.numeroconta();
-		this.tipoTransacao = dto.tipoTransacao();
+	public Transacao(TransacaoDTO dto, TipoTransacao tipo) {
+		this.numeroConta = dto.numeroConta();
+		this.tipoTransacao = tipo;
 		this.valor = dto.valor();
 		//DateTimeFormatter formatadorBarra = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		this.dataTransacao = LocalDate.now();//.format(formatadorBarra);

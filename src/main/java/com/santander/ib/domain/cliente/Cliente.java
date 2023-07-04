@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import com.santander.ib.infra.SaldoInsuficienteException;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -55,6 +57,8 @@ public class Cliente {
     public void sacar(BigDecimal valor) {
         if(valor.compareTo(saldo) <= 0) {
         	this.saldo = this.saldo.subtract(valor);
+        } else {
+        	throw new SaldoInsuficienteException();
         }
     }
 

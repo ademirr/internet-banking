@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 public class CalculadoraTaxa {
 	
-	public BigDecimal calcular(BigDecimal valor, Taxa taxa) {
-		return taxa.calcular(valor);
+	public BigDecimal calcular(BigDecimal valor, Boolean planoExclusive, Taxa taxa) {
+		return taxa.calcular(valor, planoExclusive);
 	}
 
 }

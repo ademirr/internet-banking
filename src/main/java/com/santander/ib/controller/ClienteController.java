@@ -29,20 +29,26 @@ public class ClienteController {
 	private ClienteService service;
 	
 	@PostMapping
-    public ResponseEntity<ClienteDetalhamentoDTO> cadastrar(@RequestBody @Valid ClienteDTO dto, UriComponentsBuilder uriBuilder) {
-		ClienteDetalhamentoDTO cliente = service.cadastrarCliente(dto);
-		URI endereco = uriBuilder.path("/clientes/{id}").buildAndExpand(cliente.getNumeroConta()).toUri();
+    public ResponseEntity<ClienteDTO> cadastrar(@RequestBody @Valid ClienteDTO dto, UriComponentsBuilder uriBuilder) {
+		ClienteDTO cliente = service.cadastrarCliente(dto);
+		URI endereco = uriBuilder.path("/clientes/{numeroConta}").buildAndExpand(cliente.numeroConta()).toUri();
         return ResponseEntity.created(endereco).body(cliente);
     }
 	
 	@GetMapping
-    public Page<ClienteDetalhamentoDTO> listar(@PageableDefault(size = 10) Pageable paginacao) {
+    public Page<ClienteDTO> listar(@PageableDefault(size = 10) Pageable paginacao) {
         return service.listarClientes(paginacao);
     }
 
-    @GetMapping("/{id}")
+    /*@GetMapping("/{id}")
     public ResponseEntity<ClienteDetalhamentoDTO> detalhar(@PathVariable Long id) {
         var cliente = service.getReferenceById(id);
+        return ResponseEntity.ok(cliente);
+    }*/
+
+    @GetMapping("/{numeroConta}")
+    public ResponseEntity<ClienteDTO> detalharPorConta(@PathVariable String numeroConta) {
+        var cliente = service.getByConta(numeroConta);
         return ResponseEntity.ok(cliente);
     }
 

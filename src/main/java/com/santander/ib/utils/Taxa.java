@@ -4,6 +4,6 @@ import java.math.BigDecimal;
 
 public interface Taxa {
 	
-	BigDecimal calcular(BigDecimal valor);
+	BigDecimal calcular(BigDecimal valor, Boolean planoExclusive);
 
 }

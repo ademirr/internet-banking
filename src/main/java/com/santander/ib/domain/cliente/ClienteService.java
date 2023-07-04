@@ -6,6 +6,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.santander.ib.infra.ContaJaExisteException;
+import com.santander.ib.infra.ContaNaoExisteException;
+
 @Service
 public class ClienteService {
 	
@@ -15,22 +18,41 @@ public class ClienteService {
 	@Autowired
     private ModelMapper modelMapper;
 
-	public Page<ClienteDetalhamentoDTO> listarClientes(Pageable paginacao) {
+	public Page<ClienteDTO> listarClientes(Pageable paginacao) {
         return repository
                 .findAll(paginacao)
-                .map(p -> modelMapper.map(p, ClienteDetalhamentoDTO.class));
+                .map(p -> new ClienteDTO(p));
     }
 
-    public ClienteDetalhamentoDTO cadastrarCliente(ClienteDTO dto) {
+    public ClienteDTO cadastrarCliente(ClienteDTO dto) {
+    	this.verificaContaJaCadastrada(dto.numeroConta());
         Cliente cliente = new Cliente(dto);
         cliente = repository.save(cliente);
-
-        return modelMapper.map(cliente, ClienteDetalhamentoDTO.class);
+        return new ClienteDTO(cliente);
     }
 
-	public ClienteDetalhamentoDTO getReferenceById(Long id) {
+	/*public ClienteDetalhamentoDTO getReferenceById(Long id) {
 		var cliente = repository.getReferenceById(id);
 		return modelMapper.map(cliente, ClienteDetalhamentoDTO.class);
+	}*/
+
+	public ClienteDTO getByConta(String conta) {
+		var cliente = repository.findByNumeroConta(conta);
+		if (cliente == null) {
+			throw new ContaNaoExisteException();
+		}
+		return new ClienteDTO(cliente);
+	}
+
+	public Cliente findByNumeroConta(String numeroconta) {
+		return repository.findByNumeroConta(numeroconta);
+	}
+	
+	public void verificaContaJaCadastrada(String numeroconta) {
+		Cliente cliente = repository.findByNumeroConta(numeroconta);
+		if (cliente != null) {
+			throw new ContaJaExisteException();
+		}
 	}
 
 }
